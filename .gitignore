@@ -1,0 +1,12 @@
+/.vscode
+/.vscode-test.mjs
+/.vscodeignore
+/CHANGELOG.md
+/eslint.config.mjs
+/node_modules
+/out
+/package-lock.json
+/resources
+/unificado.vibliv
+/vsc-extension-quickstart.md
+/window-border-0.0.1.vsix

@@ -1,0 +1,108 @@
+{
+  "name": "window-border",
+  "displayName": "Window Border",
+  "description": "Personaliza el color de las ventanas de VS Code por proyecto",
+  "version": "0.0.1",
+  "publisher": "vibliv",
+  "author": "vibliv",
+  "license": "MIT",
+  "engines": {
+      "vscode": "^1.95.0",
+      "node": ">=16.0.0"
+  },
+  "categories": [
+      "Other"
+  ],
+  "keywords": [
+      "color",
+      "theme",
+      "workspace",
+      "window",
+      "border",
+      "customization"
+  ],
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/vibliv/window-border"
+  },
+  "activationEvents": [
+      "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "window-border.colorMenu",
+              "title": "Window Border: Color Menu",
+              "category": "Window Border"
+          },
+          {
+              "command": "window-border.setBorderColor",
+              "title": "Window Border: Set Color",
+              "category": "Window Border"
+          }
+      ],
+      "viewsContainers": {
+          "activitybar": [
+              {
+                  "id": "window-border-palette",
+                  "title": "Window Border",
+                  "icon": "$(symbol-color)"
+              }
+          ]
+      },
+      "views": {
+          "window-border-palette": [
+              {
+                  "type": "webview",
+                  "id": "window-border.colorPalette",
+                  "name": "Color Palette",
+                  "icon": "$(symbol-color)",
+                  "contextualTitle": "Window Border Colors"
+              }
+          ]
+      },
+      "configuration": {
+          "title": "Window Border",
+          "properties": {
+              "window-border.color": {
+                  "type": "string",
+                  "default": "",
+                  "description": "Color del tema para este workspace"
+              }
+          }
+      },
+      "menus": {
+          "commandPalette": [
+              {
+                  "command": "window-border.colorMenu",
+                  "when": "workspaceHasFolder"
+              },
+              {
+                  "command": "window-border.setBorderColor",
+                  "when": "workspaceHasFolder"
+              }
+          ]
+      }
+  }
+  ,
+  "scripts": {
+      "vscode:prepublish": "npm run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -watch -p ./",
+      "pretest": "npm run compile && npm run lint",
+      "lint": "eslint src",
+      "test": "vscode-test"
+  },
+  "devDependencies": {
+      "@types/vscode": "^1.95.0",
+      "@types/mocha": "^10.0.9",
+      "@types/node": "^20.11.0",
+      "@typescript-eslint/eslint-plugin": "^6.19.0",
+      "@typescript-eslint/parser": "^6.19.0",
+      "eslint": "^8.56.0",
+      "typescript": "^5.3.3",
+      "@vscode/test-cli": "^0.0.4",
+      "@vscode/test-electron": "^2.3.8"
+  }
+}
